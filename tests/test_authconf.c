@@ -12,12 +12,24 @@
 
 #include "common.h"
 #include "authconf.h"
+#include "upsclient.h"	/* For upscli_cleanup() */
 
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdarg.h>
+#ifdef HAVE_STDARG_H
+# include <stdarg.h>
+#endif
+#ifdef HAVE_SYS_STDARG_H
+# include <sys/stdarg.h>
+#endif
+
+static void exit_cleanup(void) {
+	if (!upscli_cleanup()) {
+		fprintf(stderr, "FAILED upscli_cleanup() during exit");
+	}
+}
 
 int main(int argc, char **argv)
 {
@@ -47,6 +59,8 @@ int main(int argc, char **argv)
 		return 1;
 	}
 
+	atexit(exit_cleanup);
+
 	expected_sections++;
 	fprintf(f, "USER = globaluser\n");
 	fprintf(f, "PASS = globalpass\n");
@@ -60,6 +74,12 @@ int main(int argc, char **argv)
 
 	expected_sections++;
 	fprintf(f, "[admin@localhost:12345]\n");
+	fprintf(f, "  PASS = adminpass\n");
+	fprintf(f, "  FORCESSL = 1\n");
+
+	expected_sections++;
+	/* localhost should get defaulted here: */
+	fprintf(f, "[bigadmin@:12345]\n");
 	fprintf(f, "  PASS = adminpass\n");
 	fprintf(f, "  FORCESSL = 1\n");
 	fclose(f);
@@ -106,7 +126,7 @@ int main(int argc, char **argv)
 
 	if ((s = getenv("NUT_AUTHCONF_FILE"))) {
 		printf("=== FYI: Trying NUT_AUTHCONF_FILE='%s' just for kicks\n", s);
-		if (upscli_read_authconf_file(NULL, 0) != 1) {
+		if (upscli_read_authconf_file(NULL, 0, 0) != 1) {
 			fprintf(stderr, "INFO: Default read_authconf failed (user-provided config parsing failed)\n");
 		} else {
 			printf("=== Parsed user configuration (debug view):\n");
@@ -118,7 +138,7 @@ int main(int argc, char **argv)
 
 	/* 1. Expected file read */
 	printf("=== Reading '%s' generated for this test\n", test_conf);
-	if (upscli_read_authconf_file(test_conf, 1) != 1) {
+	if (upscli_read_authconf_file(test_conf, 1, -1) != 1) {
 		fprintf(stderr, "not ok %d - read_authconf failed\n", ++testnum);
 		return 1;
 	}
@@ -549,7 +569,39 @@ int main(int argc, char **argv)
 		return 1;
 	}
 
-	/* 31. Expected printout 3 */
+	/* 31. Empty hostname [bigadmin@:12345] should be saved by parser with "localhost" */
+	printf("Checking empty hostname in address section becomes localhost\n");
+	ac = upscli_find_authconf_item("bigadmin", "localhost", "12345");
+	if (ac) {
+		if (ac->section && !strcmp(ac->section, "bigadmin@localhost:12345")) {
+			printf("ok %d - got expected user, address and port as the section name\n", ++testnum);
+		} else {
+			printf("not ok %d - did not get expected user, address and port as the section name\n", ++testnum);
+			upscli_dump_authconf_item(NULL, ac, 1, 1);
+			return 1;
+		}
+	} else {
+		printf("not ok %d - did not get any section by expected user, address and port\n", ++testnum);
+		return 1;
+	}
+
+	/* 32. Empty hostname [bigadmin@:12345] */
+	printf("Checking empty hostname in address section becomes localhost\n");
+	ac = upscli_find_authconf_item("bigadmin", "", "12345");
+	if (ac) {
+		if (ac->section && !strcmp(ac->section, "bigadmin@localhost:12345")) {
+			printf("ok %d - got expected user, address (normalized from empty) and port as the section name\n", ++testnum);
+		} else {
+			printf("not ok %d - did not get expected user, address (normalized from empty) and port as the section name\n", ++testnum);
+			upscli_dump_authconf_item(NULL, ac, 1, 1);
+			return 1;
+		}
+	} else {
+		printf("not ok %d - did not get any section by expected user, address (normalized from empty) and port\n", ++testnum);
+		return 1;
+	}
+
+	/* 33. Expected printout 3 */
 	printf("=== Parsed configuration (production view) after several 'get' operations with results caching:\n");
 	/* Not "for_debug", but how would this info look in a config file */
 	num_sections = upscli_dump_authconf_list(NULL, 0, 1);

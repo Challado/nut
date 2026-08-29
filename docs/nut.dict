@@ -1,4 +1,4 @@
-personal_ws-1.1 en 3792 utf-8
+personal_ws-1.1 en 3818 utf-8
 AAC
 AAS
 ABI
@@ -66,6 +66,7 @@ Antonino
 Apodaca
 AppData
 AppVeyor
+ApparentPower
 ArgumentList
 Arjen
 Arkadiusz
@@ -151,6 +152,7 @@ Bourne
 Boutell's
 Brabec
 Breiland
+Brogaard
 Brownell
 Bs
 BuildBot
@@ -287,6 +289,7 @@ DS
 DSA
 DSHUTD
 DSL
+DSM
 DTE
 DTrace
 DUMPALL
@@ -339,6 +342,8 @@ EG
 EINVAL
 EL
 ELCD
+ELCDSL
+ELCDSXL
 EMI
 EMP
 EMPDT
@@ -802,6 +807,7 @@ Mozilla
 Msg
 MultiLink
 Multiplug
+Mutexes
 MyCompany
 MyPasSw
 MyState
@@ -873,6 +879,7 @@ NetXML
 Netman
 NetworkUPSTools
 Neus
+Nicolai
 Niels
 Niemueller
 Niklas
@@ -898,6 +905,8 @@ OIDs
 OLHVT
 OMNIVS
 OMNIVSINT
+OMRON
+OMRON's
 ONF
 ONV
 OO
@@ -983,12 +992,15 @@ PROGS
 PROTVER
 PRs
 PSA
+PSCERT
 PSD
 PSDR
+PSEMD
 PSF
 PSFn
 PSGPSER
 PSSENTR
+PSSNMPV
 PSUs
 PSW
 PSX
@@ -1026,11 +1038,13 @@ PnP
 Poettering
 Pohle
 PointBre
+Polska
 Pos
 Potrans
 Poush
 PowerAlert
 PowerCOM
+PowerChute
 PowerCom
 PowerES
 PowerGuide
@@ -1096,6 +1110,7 @@ QLDL
 QMD
 QMF
 QMOD
+QNAP
 QOL
 QP
 QPAR
@@ -1103,6 +1118,7 @@ QPD
 QQ
 QQQ
 QRI
+QTS
 QVFW
 QWS
 QinHeng
@@ -1182,6 +1198,7 @@ Ryabov
 Rzepecki
 SAI
 SASU
+SCL
 SCM
 SCO
 SCR
@@ -1353,6 +1370,7 @@ Sy
 Sycon
 Symmetra
 Symmetras
+Synology
 SyntaxWarning
 Sysgration
 SyslogIdentifier
@@ -1373,6 +1391,7 @@ TESTCERT
 TESTPASS
 TEoQ
 TGS
+TIMEJUMP
 TIMELEFT
 TIOCM
 TIOCMBIC
@@ -2027,6 +2046,7 @@ dereference
 desc
 deschis
 descr
+descriptor's
 desde
 desertwitch
 designator
@@ -2114,6 +2134,7 @@ ePDUs
 eaton
 ec
 eco
+ecoflow
 ecomode
 edb
 editorconfig
@@ -2811,6 +2832,7 @@ nlb
 nlogic
 nls
 nm
+nmbro
 nn
 nnn
 noAuthNoPriv
@@ -2893,6 +2915,7 @@ oldmac
 oldmge
 oldnut
 omnios
+omron
 onbatt
 onbattery
 onbattwarn
@@ -3133,6 +3156,7 @@ repindex
 repo
 reportId
 reposurgeon
+replug
 repotec
 req
 resetter
@@ -3343,6 +3367,7 @@ startdelay
 startup
 statepath
 stayoff
+stdarg
 stderr
 stdint
 stdlib
@@ -3560,6 +3585,7 @@ unmapped
 unmounts
 unpowered
 unstash
+unswitched
 updateinfo
 upexia
 upower
