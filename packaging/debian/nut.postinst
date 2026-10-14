@@ -19,7 +19,15 @@ case "$1" in
     chmod 770 /var/run/nut /var/lib/nut
 
     # restart udev to apply the USB rules to the already plugged devices
-    [ -x /etc/init.d/udev ] && /etc/init.d/udev restart
+    # only if it's already running in this environment
+    udevd_pid=$(pidof udevd 2>/dev/null) || true
+    if [ -x /etc/init.d/udev ] && [ -n "$udevd_pid" ]; then
+        if [ "$(/usr/bin/stat -c %d/%i /)" = "$(/usr/bin/stat -Lc %d/%i /proc/$udevd_pid/root 2>/dev/null)" ];
+        then
+            # coldplug replay on the USB bus only
+            /sbin/udevtrigger --subsystem-match=usb_device
+        fi
+    fi
     ;;
 
   abort-upgrade)
