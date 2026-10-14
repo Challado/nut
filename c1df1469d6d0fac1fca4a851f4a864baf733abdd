@@ -1,0 +1,8 @@
+{
+  "svn_url": "file:///mnt/export/subversion/nut/trunk",
+  "revision": 2,
+  "uuid": "5f2f2009-99cd-4845-9af7-39d0aa6e3748",
+  "log_xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<log>\n<logentry\n   revision=\"2\">\n<author>root</author>\n<date>2026-10-14T17:24:38.385451Z</date>\n<paths>\n<path\n   prop-mods=\"false\"\n   text-mods=\"true\"\n   kind=\"file\"\n   action=\"A\">/trunk/.gitignore</path>\n</paths>\n<msg>New repository initialized by cvs2svn.\n\nFossil-ID: SVN r1\n\nSVN-Git-Bridge: nut-3e341d2d9c-3fc79f1e8124 d92ffa4d806a1ed16481fafcc500c07a02db4eba\nBridge-Author: no-author &lt;no-author&gt;\nBridge-Author-Date: 2005-01-27T14:33:14Z\nBridge-Committer: no-author &lt;no-author&gt;\nBridge-Committer-Date: 2005-01-27T14:33:14Z\nFrom: no-author &lt;no-author&gt;</msg>\n</logentry>\n</log>\n",
+  "properties_xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<properties>\n</properties>\n",
+  "directories_and_files_xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<lists>\n<list\n   path=\"file:///mnt/export/subversion/nut/trunk\">\n<entry\n   kind=\"file\">\n<name>.gitignore</name>\n<size>160</size>\n<commit\n   revision=\"2\">\n<author>root</author>\n<date>2026-10-14T17:24:38.385451Z</date>\n</commit>\n</entry>\n</list>\n</lists>\n"
+}
