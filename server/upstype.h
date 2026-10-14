@@ -46,4 +46,6 @@ typedef struct {
 	void	*next;
 }	upstype;
 
+extern upstype	*firstups;
+
 #endif	/* UPSTYPE_H_SEEN */
