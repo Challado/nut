@@ -1,0 +1,8 @@
+{
+  "svn_url": "file:///mnt/export/subversion/nut/trunk",
+  "revision": 1,
+  "uuid": "5f2f2009-99cd-4845-9af7-39d0aa6e3748",
+  "log_xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<log>\n<logentry\n   revision=\"1\">\n<author>root</author>\n<date>2026-10-14T17:24:29.273664Z</date>\n<paths>\n<path\n   action=\"A\"\n   prop-mods=\"false\"\n   text-mods=\"false\"\n   kind=\"dir\">/branches</path>\n<path\n   action=\"A\"\n   prop-mods=\"false\"\n   text-mods=\"false\"\n   kind=\"dir\">/tags</path>\n<path\n   action=\"A\"\n   prop-mods=\"false\"\n   text-mods=\"false\"\n   kind=\"dir\">/trunk</path>\n</paths>\n<msg>Prepara estrutura SVN para importar o GitHub</msg>\n</logentry>\n</log>\n",
+  "properties_xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<properties>\n</properties>\n",
+  "directories_and_files_xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<lists>\n<list\n   path=\"file:///mnt/export/subversion/nut/trunk\">\n</list>\n</lists>\n"
+}
